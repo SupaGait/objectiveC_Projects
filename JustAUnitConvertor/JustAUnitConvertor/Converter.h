@@ -7,15 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MeasurementTypes.h"
 
 @interface Converter : NSObject
-
-// Possible measurement types
-typedef enum MeasurementType {
-    AreaMeasurementType,
-    LengthMeasurementType,
-    TemperatureMeasurementType
-}MeasurementType;
 
 -(void)selectMeasurement:(MeasurementType)measurementType;
 -(double)convert:(double)inputValue;

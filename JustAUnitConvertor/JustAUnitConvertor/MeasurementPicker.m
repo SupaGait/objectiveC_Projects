@@ -36,5 +36,10 @@ NSArray* _measurementTypes;
     NSLog(@"Selected row:%ld component:%ld", row, component);
 }
 
+-(MeasurementType)getSelectedMeasurementType{
+    // TODO
+    return AreaMeasurementType;
+}
+
 
 @end

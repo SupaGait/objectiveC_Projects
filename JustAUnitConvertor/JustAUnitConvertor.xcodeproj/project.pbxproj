@@ -37,6 +37,7 @@
 		4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementPicker.m; sourceTree = "<group>"; };
 		4C4D33081CF8A3FB003E016B /* ConverterPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterPicker.h; sourceTree = "<group>"; };
 		4C4D33091CF8A3FB003E016B /* ConverterPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterPicker.m; sourceTree = "<group>"; };
+		4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeasurementTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				4C4D330B1CF8A990003E016B /* PickerControll */,
+				4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */,
 				4C4D33021CF89A54003E016B /* Converter.h */,
 				4C4D33031CF89A54003E016B /* Converter.m */,
 				4C4D32E41CF88344003E016B /* AppDelegate.h */,

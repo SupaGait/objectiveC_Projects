@@ -11,4 +11,16 @@
 
 @implementation Converter
 
+MeasurementType _selectedMeasurement;
+
+
+-(void)selectMeasurement:(MeasurementType)measurementType {
+    _selectedMeasurement = measurementType;
+}
+
+
+-(double)convert:(double)inputValue{
+    return 0;
+}
+
 @end
