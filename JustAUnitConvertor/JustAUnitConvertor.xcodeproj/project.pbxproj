@@ -14,6 +14,9 @@
 		4C4D32EE1CF88344003E016B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D32ED1CF88344003E016B /* Assets.xcassets */; };
 		4C4D32F11CF88344003E016B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D32EF1CF88344003E016B /* LaunchScreen.storyboard */; };
 		4C4D33011CF88F09003E016B /* unit-converter-app58.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D33001CF88F09003E016B /* unit-converter-app58.png */; };
+		4C4D33041CF89A54003E016B /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33031CF89A54003E016B /* Converter.m */; };
+		4C4D33071CF8A3E7003E016B /* MeasurementPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */; };
+		4C4D330A1CF8A3FB003E016B /* ConverterPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33091CF8A3FB003E016B /* ConverterPicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,12 @@
 		4C4D32F01CF88344003E016B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4D32F21CF88344003E016B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4D33001CF88F09003E016B /* unit-converter-app58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unit-converter-app58.png"; sourceTree = "<group>"; };
+		4C4D33021CF89A54003E016B /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
+		4C4D33031CF89A54003E016B /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converter.m; sourceTree = "<group>"; };
+		4C4D33051CF8A3E7003E016B /* MeasurementPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementPicker.h; sourceTree = "<group>"; };
+		4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementPicker.m; sourceTree = "<group>"; };
+		4C4D33081CF8A3FB003E016B /* ConverterPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterPicker.h; sourceTree = "<group>"; };
+		4C4D33091CF8A3FB003E016B /* ConverterPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterPicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,9 @@
 		4C4D32E01CF88344003E016B /* JustAUnitConvertor */ = {
 			isa = PBXGroup;
 			children = (
+				4C4D330B1CF8A990003E016B /* PickerControll */,
+				4C4D33021CF89A54003E016B /* Converter.h */,
+				4C4D33031CF89A54003E016B /* Converter.m */,
 				4C4D32E41CF88344003E016B /* AppDelegate.h */,
 				4C4D32E51CF88344003E016B /* AppDelegate.m */,
 				4C4D32E71CF88344003E016B /* ViewController.h */,
@@ -80,6 +92,17 @@
 				4C4D32E21CF88344003E016B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C4D330B1CF8A990003E016B /* PickerControll */ = {
+			isa = PBXGroup;
+			children = (
+				4C4D33051CF8A3E7003E016B /* MeasurementPicker.h */,
+				4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */,
+				4C4D33081CF8A3FB003E016B /* ConverterPicker.h */,
+				4C4D33091CF8A3FB003E016B /* ConverterPicker.m */,
+			);
+			name = PickerControll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,9 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4D330A1CF8A3FB003E016B /* ConverterPicker.m in Sources */,
+				4C4D33041CF89A54003E016B /* Converter.m in Sources */,
 				4C4D32E91CF88344003E016B /* ViewController.m in Sources */,
 				4C4D32E61CF88344003E016B /* AppDelegate.m in Sources */,
 				4C4D32E31CF88344003E016B /* main.m in Sources */,
+				4C4D33071CF8A3E7003E016B /* MeasurementPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +332,7 @@
 				4C4D32F71CF88344003E016B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
