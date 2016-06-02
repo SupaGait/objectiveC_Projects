@@ -9,10 +9,18 @@
 #import "Converter.h"
 
 
-@implementation Converter
+@implementation Converter{
+    MeasurementType _selectedMeasurement;
+}
 
-MeasurementType _selectedMeasurement;
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _selectedMeasurement = MeasurementTypeArea;
+    }
+    return self;
+}
 
 -(void)selectMeasurement:(MeasurementType)measurementType {
     _selectedMeasurement = measurementType;
@@ -20,6 +28,7 @@ MeasurementType _selectedMeasurement;
 
 
 -(double)convert:(double)inputValue{
+    
     return 0;
 }
 

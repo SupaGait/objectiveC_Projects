@@ -12,6 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *measurementPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *converterPicker;
+@property (weak, nonatomic) IBOutlet UITextField *inputTextField;
+
+- (IBAction)inputTextFieldChanged:(id)sender;
 
 @end
 

@@ -17,6 +17,8 @@
 		4C4D33041CF89A54003E016B /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33031CF89A54003E016B /* Converter.m */; };
 		4C4D33071CF8A3E7003E016B /* MeasurementPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */; };
 		4C4D330A1CF8A3FB003E016B /* ConverterPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33091CF8A3FB003E016B /* ConverterPicker.m */; };
+		4C8A30371D009234006A3B32 /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A30361D009234006A3B32 /* Unit.m */; };
+		4C8A303B1D0094EC006A3B32 /* MeasurementBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A303A1D0094EC006A3B32 /* MeasurementBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementPicker.m; sourceTree = "<group>"; };
 		4C4D33081CF8A3FB003E016B /* ConverterPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterPicker.h; sourceTree = "<group>"; };
 		4C4D33091CF8A3FB003E016B /* ConverterPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterPicker.m; sourceTree = "<group>"; };
+		4C8A30351D009234006A3B32 /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
+		4C8A30361D009234006A3B32 /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
+		4C8A30391D0094EC006A3B32 /* MeasurementBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementBase.h; sourceTree = "<group>"; };
+		4C8A303A1D0094EC006A3B32 /* MeasurementBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementBase.m; sourceTree = "<group>"; };
 		4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeasurementTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,10 +76,8 @@
 		4C4D32E01CF88344003E016B /* JustAUnitConvertor */ = {
 			isa = PBXGroup;
 			children = (
+				4C8A30341D007E77006A3B32 /* Logic */,
 				4C4D330B1CF8A990003E016B /* PickerControll */,
-				4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */,
-				4C4D33021CF89A54003E016B /* Converter.h */,
-				4C4D33031CF89A54003E016B /* Converter.m */,
 				4C4D32E41CF88344003E016B /* AppDelegate.h */,
 				4C4D32E51CF88344003E016B /* AppDelegate.m */,
 				4C4D32E71CF88344003E016B /* ViewController.h */,
@@ -105,6 +109,20 @@
 				4C4D33091CF8A3FB003E016B /* ConverterPicker.m */,
 			);
 			name = PickerControll;
+			sourceTree = "<group>";
+		};
+		4C8A30341D007E77006A3B32 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */,
+				4C4D33021CF89A54003E016B /* Converter.h */,
+				4C4D33031CF89A54003E016B /* Converter.m */,
+				4C8A30351D009234006A3B32 /* Unit.h */,
+				4C8A30361D009234006A3B32 /* Unit.m */,
+				4C8A30391D0094EC006A3B32 /* MeasurementBase.h */,
+				4C8A303A1D0094EC006A3B32 /* MeasurementBase.m */,
+			);
+			name = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +199,10 @@
 				4C4D330A1CF8A3FB003E016B /* ConverterPicker.m in Sources */,
 				4C4D33041CF89A54003E016B /* Converter.m in Sources */,
 				4C4D32E91CF88344003E016B /* ViewController.m in Sources */,
+				4C8A30371D009234006A3B32 /* Unit.m in Sources */,
 				4C4D32E61CF88344003E016B /* AppDelegate.m in Sources */,
 				4C4D32E31CF88344003E016B /* main.m in Sources */,
+				4C8A303B1D0094EC006A3B32 /* MeasurementBase.m in Sources */,
 				4C4D33071CF8A3E7003E016B /* MeasurementPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

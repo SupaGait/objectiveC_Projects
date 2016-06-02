@@ -10,10 +10,32 @@
 #define MeasurementTypes_h
 
 // Possible measurement types
-typedef enum MeasurementType {
-    AreaMeasurementType,
-    LengthMeasurementType,
-    TemperatureMeasurementType
-}MeasurementType;
+typedef NS_ENUM(NSInteger, MeasurementType) {
+    MeasurementTypeArea = 0,
+    MeasurementTypeLength,
+    MeasurementTypeTemperature
+};
+
+typedef NS_ENUM(NSInteger, AreaUnit) {
+    AreaUnitSquareKilometer = 0,
+    AreaUnitSquareMeter,
+    AreaUnitSquarefoot,
+    AreaUnitSize
+};
+
+typedef NS_ENUM(NSInteger, LengthUnit) {
+    LengthUnitMeter = 0,
+    LengthUnitKiloMeter,
+    LengthUnitMile,
+    LengthUnitFoot,
+    LengthUnitSize
+};
+
+typedef NS_ENUM(NSInteger, TemperatureUnit) {
+    TemperatureUnitCelsius = 0,
+    TemperatureUnitFahrenheit,
+    TemperatureUnitKelvin,
+    TemperatureUnitSize
+};
 
 #endif /* MeasurementTypes_h */

@@ -38,7 +38,7 @@ NSArray* _measurementTypes;
 
 -(MeasurementType)getSelectedMeasurementType{
     // TODO
-    return AreaMeasurementType;
+    return MeasurementTypeArea;
 }
 
 

@@ -10,36 +10,45 @@
 #import "MeasurementPicker.h"
 #import "ConverterPicker.h"
 
+#import "Converter.h"
+
 @interface ViewController ()
-
-
 
 @end
 
-@implementation ViewController
-
-MeasurementPicker* _measurmenControl;
-ConverterPicker* _converterControl;
+@implementation ViewController {
+    MeasurementPicker* _measurmentControl;
+    ConverterPicker* _converterControl;
+    Converter* _convertor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Instantiate the picker data sources
-    _measurmenControl = [[MeasurementPicker alloc] init];
+    _measurmentControl = [[MeasurementPicker alloc] init];
     _converterControl = [[ConverterPicker alloc] init];
     
     // Attach to the data source class
-    _measurementPicker.dataSource = _measurmenControl;
-    _measurementPicker.delegate = _measurmenControl;
+    _measurementPicker.dataSource = _measurmentControl;
+    _measurementPicker.delegate = _measurmentControl;
     
     _converterPicker.dataSource = _converterControl;
     _converterPicker.delegate = _converterControl;
     
+    // The convertor
+    _convertor = [[Converter alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 
+- (IBAction)inputTextFieldChanged:(id)sender {
+    // Convert the input value to the using the convertor
+    NSString* inputText = [_inputTextField text];
+    NSLog(@"%@",inputText);
+}
 @end
