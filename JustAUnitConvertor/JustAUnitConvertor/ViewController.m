@@ -25,9 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // The convertor
+    _convertor = [[Converter alloc] init];
+    
     // Instantiate the picker data sources
-    _measurmentControl = [[MeasurementPicker alloc] init];
-    _converterControl = [[ConverterPicker alloc] init];
+    _converterControl = [[ConverterPicker alloc] init:_convertor.measurementBases];
+    _measurmentControl = [[MeasurementPicker alloc] init:[_convertor getMeasurementNames]];
+    _measurmentControl.convertorPicker = _converterControl;
     
     // Attach to the data source class
     _measurementPicker.dataSource = _measurmentControl;
@@ -36,8 +40,7 @@
     _converterPicker.dataSource = _converterControl;
     _converterPicker.delegate = _converterControl;
     
-    // The convertor
-    _convertor = [[Converter alloc] init];
+
 }
 
 - (void)didReceiveMemoryWarning {

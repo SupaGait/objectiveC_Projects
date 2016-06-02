@@ -8,16 +8,14 @@
 
 #import "MeasurementPicker.h"
 
-@implementation MeasurementPicker
-
-NSArray* _measurementTypes;
-
-
-- (instancetype)init
+@implementation MeasurementPicker{
+    NSArray* _measurementBaseNames;
+}
+- (instancetype)init:(NSArray*) measurementBaseNames
 {
     self = [super init];
     if (self) {
-        _measurementTypes = @[@"Area", @"Length", @"Temperature"];
+        _measurementBaseNames = measurementBaseNames;
     }
     return self;
 }
@@ -27,19 +25,19 @@ NSArray* _measurementTypes;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return _measurementTypes.count;
+    return _measurementBaseNames.count;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return _measurementTypes[row];
+    return _measurementBaseNames[row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSLog(@"Selected row:%ld component:%ld", row, component);
+    
+    _selectedBaseName = _measurementBaseNames[row];
+    
+    if(_convertorPicker){
+        [_convertorPicker selectMeasurementType:_selectedBaseName];
+    }
 }
-
--(MeasurementType)getSelectedMeasurementType{
-    // TODO
-    return MeasurementTypeArea;
-}
-
 
 @end

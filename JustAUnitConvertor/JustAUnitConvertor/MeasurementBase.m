@@ -10,4 +10,25 @@
 
 @implementation MeasurementBase
 
+-(instancetype)init:(NSString *)name {
+    self = [super init];
+    _name = name;
+    _units = [[NSMutableArray alloc] init];
+    return self;
+}
+
+-(void)addUnit:(Unit *)unit {
+    [_units addObject:unit];
+}
+
+-(NSArray *)getAllUnitNames{
+    // Generate the names from the unit objects
+    NSMutableArray* names = [[NSMutableArray alloc] init];
+    for(int i = 0; i<_units.count; i++) {
+        Unit* unit = _units[i];
+        [names addObject:unit.name];
+    }
+    return names;
+}
+
 @end

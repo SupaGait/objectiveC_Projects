@@ -7,14 +7,19 @@
 //
 
 #import "ConverterPicker.h"
+#import "MeasurementBase.h"
 
-@implementation ConverterPicker
+@implementation ConverterPicker{
+    NSMutableDictionary* _measurementBases;
+    NSArray* _measurementUnits;
+}
 
-- (instancetype)init
+- (instancetype)init:(NSMutableDictionary*)measurementBases
 {
     self = [super init];
     if (self) {
-        //TODO
+        _measurementBases = measurementBases;
+        _measurementUnits = [[NSArray alloc] init];
     }
     return self;
 }
@@ -24,18 +29,21 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 2;//TODO
+    return _measurementUnits.count;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return @"TODO";
+    return _measurementUnits[row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSLog(@"Selected row:%ld component:%ld", row, component);
 }
 
--(void)selectMeasurementType:(MeasurementType)measurementType
+-(void)selectMeasurementType:(NSString*)baseName
 {
-    //Todo change text
+    NSLog(@"Convertor update: %@", baseName);
+    
+    MeasurementBase* measurementBase = _measurementBases[baseName];
+    _measurementUnits = [measurementBase getAllUnitNames];
 }
 
 @end

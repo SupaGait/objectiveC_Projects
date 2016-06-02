@@ -12,6 +12,10 @@
 @interface MeasurementBase : NSObject
 
 @property (nonatomic) NSString* name;
-@property (nonatomic) NSArray* units;
+@property (nonatomic) NSMutableArray* units;
+
+-(instancetype)init:(NSString*)name;
+-(void)addUnit:(Unit*)unit;
+-(NSArray*)getAllUnitNames;
 
 @end

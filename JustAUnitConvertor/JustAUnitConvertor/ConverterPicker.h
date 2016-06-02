@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MeasurementTypes.h"
 
 @interface ConverterPicker : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 
--(void)selectMeasurementType:(MeasurementType)measurementType;
+-(instancetype)init:(NSMutableDictionary*)measurementBases;
+-(void)selectMeasurementType:(NSString*)baseName;
 
 @end

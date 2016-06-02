@@ -11,6 +11,9 @@
 
 @interface Converter : NSObject
 
+@property (nonatomic) NSMutableDictionary* measurementBases;
+
+-(NSArray*)getMeasurementNames;
 -(void)selectMeasurement:(MeasurementType)measurementType;
 -(double)convert:(double)inputValue;
 
