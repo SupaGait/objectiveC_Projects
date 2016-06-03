@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MeasurementTypes.h"
+#import "Unit.h"
 
 @interface Converter : NSObject
 
 @property (nonatomic) NSMutableDictionary* measurementBases;
 
 -(NSArray*)getMeasurementNames;
--(void)selectMeasurement:(MeasurementType)measurementType;
+-(void)setConversionFrom:(Unit*)fromUnit;
+-(void)setConversionTo:(Unit*)toUnit;
 -(double)convert:(double)inputValue;
 
 @end

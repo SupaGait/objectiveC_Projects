@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *measurementPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *converterPicker;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
+@property (weak, nonatomic) IBOutlet UILabel *outputLabel;
 
 - (IBAction)inputTextFieldChanged:(id)sender;
 

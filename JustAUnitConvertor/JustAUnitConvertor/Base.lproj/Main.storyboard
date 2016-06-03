@@ -34,6 +34,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="inputTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="FHH-53-b04"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7kc-Fe-V6C"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -43,6 +44,7 @@
                         <outlet property="converterPicker" destination="TJF-1h-ZYM" id="KtH-ym-1Nx"/>
                         <outlet property="inputTextField" destination="j79-n5-vsx" id="A05-uz-kTk"/>
                         <outlet property="measurementPicker" destination="ScI-gX-6dt" id="0m5-Sr-agX"/>
+                        <outlet property="outputLabel" destination="Xwh-yS-2P3" id="jJG-NZ-LKM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@
 
 @implementation ConverterPicker{
     NSMutableDictionary* _measurementBases;
+    MeasurementBase* _selectedBase;
     NSArray* _measurementUnits;
 }
 
@@ -21,8 +22,8 @@
         _measurementUnits = [[NSArray alloc] init];
         
         // Show first base
-        MeasurementBase* measurementBase = _measurementBases[selectBase];
-        _measurementUnits = [measurementBase getAllUnitNames];
+        _selectedBase = _measurementBases[selectBase];
+        _measurementUnits = [_selectedBase getAllUnitNames];
     }
     return self;
 }
@@ -39,6 +40,21 @@
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSLog(@"Selected row:%ld component:%ld", row, component);
+    
+    switch (component) {
+        case 0:{
+            Unit* fromUnit = [_selectedBase getUnit:(int)row];
+            [_converter setConversionFrom:fromUnit];
+            break;
+        }
+        case 1:{
+            Unit* toUnit = [_selectedBase getUnit:(int)row];
+            [_converter setConversionTo:toUnit];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 -(void)selectMeasurementType:(NSString*)baseName
@@ -46,8 +62,8 @@
     NSLog(@"Convertor update: %@", baseName);
     
     // Update data
-    MeasurementBase* measurementBase = _measurementBases[baseName];
-    _measurementUnits = [measurementBase getAllUnitNames];
+    _selectedBase = _measurementBases[baseName];
+    _measurementUnits = [_selectedBase getAllUnitNames];
     
     // Reload the view
     if(_pickerUIView){

@@ -21,6 +21,10 @@
     [_units addObject:unit];
 }
 
+-(Unit*)getUnit:(int)index{
+    return _units[index];
+}
+
 -(NSArray *)getAllUnitNames{
     // Generate the names from the unit objects
     NSMutableArray* names = [[NSMutableArray alloc] init];

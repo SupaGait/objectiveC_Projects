@@ -10,7 +10,8 @@
 #import "MeasurementBase.h"
 
 @implementation Converter{
-    MeasurementType _selectedMeasurement;
+    Unit* _fromUnit;
+    Unit* _toUnit;
 }
 
 - (instancetype)init
@@ -19,7 +20,6 @@
     if (self) {
         
         _measurementBases = [[NSMutableDictionary alloc] init];
-        _selectedMeasurement = MeasurementTypeArea;
         [self fillBaseTypes];
     }
     return self;
@@ -29,7 +29,7 @@
     {
         // Fill the area base unit
         MeasurementBase* areaBase = [[MeasurementBase alloc] init:@"Area"];
-        [areaBase addUnit: [[Unit alloc] initWithName:@"Square kilometre" offset:0.0 factor:0.000001 unitName:@"km2"]];
+        [areaBase addUnit: [[Unit alloc] initWithName:@"Square kilometre" offset:0.0 factor:1000000 unitName:@"km2"]];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square metre" offset:0.0 factor:1.0 unitName:@"m2" ]];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square foot" offset:0.0 factor:10.7639 unitName:@"ft2"]];
         [_measurementBases setObject:areaBase forKey:areaBase.name];
@@ -37,7 +37,7 @@
     {
         // Fill the length base
         MeasurementBase* lengthBase = [[MeasurementBase alloc] init:@"Length"];
-        [lengthBase addUnit: [[Unit alloc] initWithName:@"Kilometer" offset:0.0 factor:0.001 unitName:@"km"]];
+        [lengthBase addUnit: [[Unit alloc] initWithName:@"Kilometer" offset:0.0 factor:1000 unitName:@"km"]];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Meter" offset:0.0 factor:1.0 unitName:@"m"]];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Mile" offset:0.0 factor:0.000621371 unitName:@"mi"]];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Foot" offset:0.0 factor:3.28084 unitName:@"ft"]];
@@ -57,14 +57,25 @@
     return [_measurementBases allKeys];
 }
 
--(void)selectMeasurement:(MeasurementType)measurementType {
-    _selectedMeasurement = measurementType;
+-(void)setConversionFrom:(Unit*)fromUnit{
+    _fromUnit = fromUnit;
+}
+-(void)setConversionTo:(Unit*)toUnit{
+    _toUnit = toUnit;
 }
 
-
 -(double)convert:(double)inputValue{
+    double value = 0;
     
-    return 0;
+    // Convert the value.
+    // Start applying 'from' parameters, which converts to the base SI
+    // Then from base SI to the new Unit using 'to' parameters.
+    if(_fromUnit && _toUnit){
+        value = inputValue * _fromUnit.factor + _fromUnit.offset;
+        value *= 1/_toUnit.factor;
+        value += _toUnit.offset;
+    }
+    return value;
 }
 
 @end

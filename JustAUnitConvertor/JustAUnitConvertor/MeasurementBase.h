@@ -16,6 +16,7 @@
 
 -(instancetype)init:(NSString*)name;
 -(void)addUnit:(Unit*)unit;
+-(Unit*)getUnit:(int)index;
 -(NSArray*)getAllUnitNames;
 
 @end

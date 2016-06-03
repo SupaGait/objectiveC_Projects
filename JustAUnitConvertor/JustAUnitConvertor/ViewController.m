@@ -31,7 +31,9 @@
     // Instantiate the picker data sources
     _converterControl = [[ConverterPicker alloc] initMeas:_convertor.measurementBases selectBase:[_convertor getMeasurementNames][0]];
     _measurmentControl = [[MeasurementPicker alloc] init:[_convertor getMeasurementNames]];
+    
     _measurmentControl.convertorPicker = _converterControl;
+    _converterControl.converter = _convertor;
     
     // Assign UIviews to UIcontrollers
     _converterControl.pickerUIView = _converterPicker;
@@ -49,10 +51,19 @@
     // Dispose of any resources that can be recreated.
 
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"rtn: %@", [_inputTextField text]);
+    [_inputTextField resignFirstResponder];
+    return true;
+}
 
 - (IBAction)inputTextFieldChanged:(id)sender {
     // Convert the input value to the using the convertor
     NSString* inputText = [_inputTextField text];
-    NSLog(@"%@",inputText);
+    NSLog(@"Value: %@",inputText);
+    
+    double inputValue = [_inputTextField.text doubleValue];
+    double outputValue = [_convertor convert:inputValue];
+    _outputLabel.text = [NSString stringWithFormat:@"%f",outputValue];
 }
 @end
