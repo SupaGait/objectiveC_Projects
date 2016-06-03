@@ -14,12 +14,15 @@
     NSArray* _measurementUnits;
 }
 
-- (instancetype)init:(NSMutableDictionary*)measurementBases
-{
+- (instancetype)initMeas:(NSMutableDictionary*)measurementBases selectBase:(NSString*)selectBase {
     self = [super init];
     if (self) {
         _measurementBases = measurementBases;
         _measurementUnits = [[NSArray alloc] init];
+        
+        // Show first base
+        MeasurementBase* measurementBase = _measurementBases[selectBase];
+        _measurementUnits = [measurementBase getAllUnitNames];
     }
     return self;
 }
@@ -42,8 +45,14 @@
 {
     NSLog(@"Convertor update: %@", baseName);
     
+    // Update data
     MeasurementBase* measurementBase = _measurementBases[baseName];
     _measurementUnits = [measurementBase getAllUnitNames];
+    
+    // Reload the view
+    if(_pickerUIView){
+        [_pickerUIView reloadAllComponents];
+    }
 }
 
 @end

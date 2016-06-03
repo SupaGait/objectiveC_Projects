@@ -10,10 +10,12 @@
 
 @implementation Unit
 
--(instancetype)init:(NSString *)name andFactor:(double)factor {
+-(instancetype)initWithName:(NSString*)name offset:(double)offset factor:(double)factor unitName:(NSString*)unitName {
     self = [super init];
     _name = name;
+    _offset = offset;
     _factor = factor;
+    _unitName = unitName;
     return self;
 }
 

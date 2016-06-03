@@ -11,8 +11,10 @@
 @interface Unit : NSObject
 
 @property (nonatomic) NSString* name;
+@property (nonatomic) double offset;
 @property (nonatomic) double factor;
+@property (nonatomic) NSString* unitName;
 
--(instancetype)init:(NSString*)name andFactor:(double)factor;
+-(instancetype)initWithName:(NSString*)name offset:(double)offset factor:(double)factor unitName:(NSString*)unitName;
 
 @end
