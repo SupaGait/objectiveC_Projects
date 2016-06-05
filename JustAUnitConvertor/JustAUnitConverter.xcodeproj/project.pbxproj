@@ -13,7 +13,6 @@
 		4C4D32EC1CF88344003E016B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D32EA1CF88344003E016B /* Main.storyboard */; };
 		4C4D32EE1CF88344003E016B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D32ED1CF88344003E016B /* Assets.xcassets */; };
 		4C4D32F11CF88344003E016B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D32EF1CF88344003E016B /* LaunchScreen.storyboard */; };
-		4C4D33011CF88F09003E016B /* unit-converter-app58.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D33001CF88F09003E016B /* unit-converter-app58.png */; };
 		4C4D33041CF89A54003E016B /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33031CF89A54003E016B /* Converter.m */; };
 		4C4D33071CF8A3E7003E016B /* MeasurementPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33061CF8A3E7003E016B /* MeasurementPicker.m */; };
 		4C4D330A1CF8A3FB003E016B /* ConverterPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D33091CF8A3FB003E016B /* ConverterPicker.m */; };
@@ -22,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C4D32DE1CF88344003E016B /* JustAUnitConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustAUnitConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C4D32DE1CF88344003E016B /* JustAUnitConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustAUnitConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4D32E21CF88344003E016B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C4D32E41CF88344003E016B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C4D32E51CF88344003E016B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -32,7 +31,6 @@
 		4C4D32ED1CF88344003E016B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C4D32F01CF88344003E016B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4D32F21CF88344003E016B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C4D33001CF88F09003E016B /* unit-converter-app58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unit-converter-app58.png"; sourceTree = "<group>"; };
 		4C4D33021CF89A54003E016B /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
 		4C4D33031CF89A54003E016B /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converter.m; sourceTree = "<group>"; };
 		4C4D33051CF8A3E7003E016B /* MeasurementPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementPicker.h; sourceTree = "<group>"; };
@@ -43,7 +41,6 @@
 		4C8A30361D009234006A3B32 /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
 		4C8A30391D0094EC006A3B32 /* MeasurementBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementBase.h; sourceTree = "<group>"; };
 		4C8A303A1D0094EC006A3B32 /* MeasurementBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementBase.m; sourceTree = "<group>"; };
-		4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeasurementTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +57,7 @@
 		4C4D32D51CF88344003E016B = {
 			isa = PBXGroup;
 			children = (
-				4C4D32E01CF88344003E016B /* JustAUnitConvertor */,
+				4C4D32E01CF88344003E016B /* JustAUnitConverter */,
 				4C4D32DF1CF88344003E016B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,16 +65,16 @@
 		4C4D32DF1CF88344003E016B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C4D32DE1CF88344003E016B /* JustAUnitConvertor.app */,
+				4C4D32DE1CF88344003E016B /* JustAUnitConverter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C4D32E01CF88344003E016B /* JustAUnitConvertor */ = {
+		4C4D32E01CF88344003E016B /* JustAUnitConverter */ = {
 			isa = PBXGroup;
 			children = (
 				4C8A30341D007E77006A3B32 /* Logic */,
-				4C4D330B1CF8A990003E016B /* PickerControll */,
+				4C4D330B1CF8A990003E016B /* PickerControl */,
 				4C4D32E41CF88344003E016B /* AppDelegate.h */,
 				4C4D32E51CF88344003E016B /* AppDelegate.m */,
 				4C4D32E71CF88344003E016B /* ViewController.h */,
@@ -88,19 +85,19 @@
 				4C4D32F21CF88344003E016B /* Info.plist */,
 				4C4D32E11CF88344003E016B /* Supporting Files */,
 			);
+			name = JustAUnitConverter;
 			path = JustAUnitConvertor;
 			sourceTree = "<group>";
 		};
 		4C4D32E11CF88344003E016B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4C4D33001CF88F09003E016B /* unit-converter-app58.png */,
 				4C4D32E21CF88344003E016B /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4C4D330B1CF8A990003E016B /* PickerControll */ = {
+		4C4D330B1CF8A990003E016B /* PickerControl */ = {
 			isa = PBXGroup;
 			children = (
 				4C4D33051CF8A3E7003E016B /* MeasurementPicker.h */,
@@ -108,13 +105,12 @@
 				4C4D33081CF8A3FB003E016B /* ConverterPicker.h */,
 				4C4D33091CF8A3FB003E016B /* ConverterPicker.m */,
 			);
-			name = PickerControll;
+			name = PickerControl;
 			sourceTree = "<group>";
 		};
 		4C8A30341D007E77006A3B32 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				4CAD8ED71CF8B6680057BB15 /* MeasurementTypes.h */,
 				4C4D33021CF89A54003E016B /* Converter.h */,
 				4C4D33031CF89A54003E016B /* Converter.m */,
 				4C8A30351D009234006A3B32 /* Unit.h */,
@@ -128,9 +124,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C4D32DD1CF88344003E016B /* JustAUnitConvertor */ = {
+		4C4D32DD1CF88344003E016B /* JustAUnitConverter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C4D32F51CF88344003E016B /* Build configuration list for PBXNativeTarget "JustAUnitConvertor" */;
+			buildConfigurationList = 4C4D32F51CF88344003E016B /* Build configuration list for PBXNativeTarget "JustAUnitConverter" */;
 			buildPhases = (
 				4C4D32DA1CF88344003E016B /* Sources */,
 				4C4D32DB1CF88344003E016B /* Frameworks */,
@@ -140,9 +136,9 @@
 			);
 			dependencies = (
 			);
-			name = JustAUnitConvertor;
+			name = JustAUnitConverter;
 			productName = JustAUnitConvertor;
-			productReference = 4C4D32DE1CF88344003E016B /* JustAUnitConvertor.app */;
+			productReference = 4C4D32DE1CF88344003E016B /* JustAUnitConverter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -159,7 +155,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C4D32D91CF88344003E016B /* Build configuration list for PBXProject "JustAUnitConvertor" */;
+			buildConfigurationList = 4C4D32D91CF88344003E016B /* Build configuration list for PBXProject "JustAUnitConverter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -172,7 +168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C4D32DD1CF88344003E016B /* JustAUnitConvertor */,
+				4C4D32DD1CF88344003E016B /* JustAUnitConverter */,
 			);
 		};
 /* End PBXProject section */
@@ -184,7 +180,6 @@
 			files = (
 				4C4D32F11CF88344003E016B /* LaunchScreen.storyboard in Resources */,
 				4C4D32EE1CF88344003E016B /* Assets.xcassets in Resources */,
-				4C4D33011CF88F09003E016B /* unit-converter-app58.png in Resources */,
 				4C4D32EC1CF88344003E016B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,9 +312,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = JustAUnitConvertor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.gklomphaar.JustAUnitConvertor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JustAUnitConverter;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -329,16 +326,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = JustAUnitConvertor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.gklomphaar.JustAUnitConvertor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JustAUnitConverter;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C4D32D91CF88344003E016B /* Build configuration list for PBXProject "JustAUnitConvertor" */ = {
+		4C4D32D91CF88344003E016B /* Build configuration list for PBXProject "JustAUnitConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C4D32F31CF88344003E016B /* Debug */,
@@ -347,7 +346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C4D32F51CF88344003E016B /* Build configuration list for PBXNativeTarget "JustAUnitConvertor" */ = {
+		4C4D32F51CF88344003E016B /* Build configuration list for PBXNativeTarget "JustAUnitConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C4D32F61CF88344003E016B /* Debug */,

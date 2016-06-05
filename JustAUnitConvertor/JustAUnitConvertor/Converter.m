@@ -9,17 +9,23 @@
 #import "Converter.h"
 #import "MeasurementBase.h"
 
+@interface Converter()
+-(void)doConversion;
+@end
+
 @implementation Converter{
     Unit* _fromUnit;
     Unit* _toUnit;
+    id _delegateDataChange;
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        
         _measurementBases = [[NSMutableDictionary alloc] init];
+        _inputValue = 0;
+        _outputValue = 0;
         [self fillBaseTypes];
     }
     return self;
@@ -33,6 +39,11 @@
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square metre" offset:0.0 factor:1.0 unitName:@"m2" ]];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square foot" offset:0.0 factor:10.7639 unitName:@"ft2"]];
         [_measurementBases setObject:areaBase forKey:areaBase.name];
+        
+        // TODO: Find correct place
+        // Set initial Units
+        _fromUnit = areaBase.units[0];
+        _toUnit = areaBase.units[0];
     }
     {
         // Fill the length base
@@ -52,30 +63,41 @@
         [_measurementBases setObject:temperatureBase forKey:temperatureBase.name];
     }
 }
-
 -(NSArray *)getMeasurementNames{
     return [_measurementBases allKeys];
 }
 
--(void)setConversionFrom:(Unit*)fromUnit{
-    _fromUnit = fromUnit;
-}
--(void)setConversionTo:(Unit*)toUnit{
-    _toUnit = toUnit;
+-(void)setInputValue:(double)inputValue{
+    _inputValue = inputValue;
+    [self doConversion];
 }
 
--(double)convert:(double)inputValue{
-    double value = 0;
-    
+-(void)setConversionFrom:(Unit*)fromUnit{
+    _fromUnit = fromUnit;
+    [self doConversion];
+}
+
+-(void)setConversionTo:(Unit*)toUnit{
+    _toUnit = toUnit;
+    [self doConversion];
+}
+
+-(void)doConversion{
     // Convert the value.
     // Start applying 'from' parameters, which converts to the base SI
     // Then from base SI to the new Unit using 'to' parameters.
+    double value = 0;
     if(_fromUnit && _toUnit){
-        value = inputValue * _fromUnit.factor + _fromUnit.offset;
+        value = _inputValue * _fromUnit.factor + _fromUnit.offset;
         value *= 1/_toUnit.factor;
         value += _toUnit.offset;
     }
-    return value;
+    _outputValue = value;
+    [_delegateDataChange convertorOutputDidChange:self];
+}
+
+-(void)setDataChangeCallback:(id)callback{
+    _delegateDataChange = callback;
 }
 
 @end

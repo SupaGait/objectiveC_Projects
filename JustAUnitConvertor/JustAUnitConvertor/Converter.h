@@ -12,10 +12,18 @@
 @interface Converter : NSObject
 
 @property (nonatomic) NSMutableDictionary* measurementBases;
+@property (nonatomic) double inputValue;
+@property (nonatomic) double outputValue;
 
 -(NSArray*)getMeasurementNames;
 -(void)setConversionFrom:(Unit*)fromUnit;
 -(void)setConversionTo:(Unit*)toUnit;
--(double)convert:(double)inputValue;
 
+-(void)setDataChangeCallback:(id)callback;
+
+@end
+
+// Callback for data change
+@interface NSObject(ConverterCallbacks)
+- (void)convertorOutputDidChange:(Converter*)convertor;
 @end

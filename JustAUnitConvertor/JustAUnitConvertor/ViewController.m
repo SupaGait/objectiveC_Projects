@@ -27,6 +27,7 @@
     
     // The convertor
     _convertor = [[Converter alloc] init];
+    [_convertor setDataChangeCallback:self]; // Register for data change callback
     
     // Instantiate the picker data sources
     _converterControl = [[ConverterPicker alloc] initMeas:_convertor.measurementBases selectBase:[_convertor getMeasurementNames][0]];
@@ -62,8 +63,13 @@
     NSString* inputText = [_inputTextField text];
     NSLog(@"Value: %@",inputText);
     
-    double inputValue = [_inputTextField.text doubleValue];
-    double outputValue = [_convertor convert:inputValue];
-    _outputLabel.text = [NSString stringWithFormat:@"%f",outputValue];
+    _convertor.inputValue = [_inputTextField.text doubleValue];
+    //_outputLabel.text = [NSString stringWithFormat:@"%f",_convertor.outputValue];
 }
+
+-(void)convertorOutputDidChange:(Converter*)convertor{
+    NSLog(@"Converter callback..");
+    _outputLabel.text = [NSString stringWithFormat:@"%f",_convertor.outputValue];
+}
+
 @end
