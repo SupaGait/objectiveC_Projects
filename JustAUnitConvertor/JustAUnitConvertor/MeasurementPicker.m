@@ -9,13 +9,13 @@
 #import "MeasurementPicker.h"
 
 @implementation MeasurementPicker{
-    NSArray* _measurementBaseNames;
+    Converter* _converter;
 }
-- (instancetype)init:(NSArray*) measurementBaseNames
+- (instancetype)initWithConverter:(Converter*)converter
 {
     self = [super init];
     if (self) {
-        _measurementBaseNames = measurementBaseNames;
+        _converter = converter;
     }
     return self;
 }
@@ -25,19 +25,16 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return _measurementBaseNames.count;
+    return [_converter getMeasurementNames].count;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return _measurementBaseNames[row];
+    return [_converter getMeasurementNames][row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSLog(@"Selected row:%ld component:%ld", row, component);
     
-    _selectedBaseName = _measurementBaseNames[row];
-    
-    if(_convertorPicker){
-        [_convertorPicker selectMeasurementType:_selectedBaseName];
-    }
+    NSString* measName = [_converter getMeasurementNames][row];
+    [_converter setMeasurementBase: measName];
 }
 
 @end

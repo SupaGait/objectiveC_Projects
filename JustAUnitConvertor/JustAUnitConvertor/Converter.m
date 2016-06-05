@@ -7,16 +7,15 @@
 //
 
 #import "Converter.h"
-#import "MeasurementBase.h"
 
 @interface Converter()
 -(void)doConversion;
 @end
 
 @implementation Converter{
-    Unit* _fromUnit;
-    Unit* _toUnit;
+    NSMutableDictionary* _measurementBases;
     id _delegateDataChange;
+    bool _baseHasChanged;
 }
 
 - (instancetype)init
@@ -26,7 +25,14 @@
         _measurementBases = [[NSMutableDictionary alloc] init];
         _inputValue = 0;
         _outputValue = 0;
+        
         [self fillBaseTypes];
+        
+        // Set default values
+        _selectedBase =  _measurementBases[@"Area"];
+        _fromUnit = _selectedBase.units[0];
+        _toUnit = _selectedBase.units[0];
+        _baseHasChanged = true;
     }
     return self;
 }
@@ -34,20 +40,15 @@
 -(void)fillBaseTypes{
     {
         // Fill the area base unit
-        MeasurementBase* areaBase = [[MeasurementBase alloc] init:@"Area"];
+        MeasurementBase* areaBase = [[MeasurementBase alloc] initWithName:@"Area"];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square kilometre" offset:0.0 factor:1000000 unitName:@"km2"]];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square metre" offset:0.0 factor:1.0 unitName:@"m2" ]];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square foot" offset:0.0 factor:10.7639 unitName:@"ft2"]];
         [_measurementBases setObject:areaBase forKey:areaBase.name];
-        
-        // TODO: Find correct place
-        // Set initial Units
-        _fromUnit = areaBase.units[0];
-        _toUnit = areaBase.units[0];
     }
     {
         // Fill the length base
-        MeasurementBase* lengthBase = [[MeasurementBase alloc] init:@"Length"];
+        MeasurementBase* lengthBase = [[MeasurementBase alloc] initWithName:@"Length"];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Kilometer" offset:0.0 factor:1000 unitName:@"km"]];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Meter" offset:0.0 factor:1.0 unitName:@"m"]];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Mile" offset:0.0 factor:0.000621371 unitName:@"mi"]];
@@ -56,15 +57,21 @@
     }
     {
         // Fill the Temperature base
-        MeasurementBase* temperatureBase = [[MeasurementBase alloc] init:@"Temperature"];
+        MeasurementBase* temperatureBase = [[MeasurementBase alloc] initWithName:@"Temperature"];
         [temperatureBase addUnit: [[Unit alloc] initWithName:@"Celsius" offset:0.0 factor:1.0 unitName:@"C"]];
         [temperatureBase addUnit: [[Unit alloc] initWithName:@"Fahrenheit" offset:32 factor:1.8 unitName:@"F"]];
         [temperatureBase addUnit: [[Unit alloc] initWithName:@"Kelvin" offset:273.15 factor:1 unitName:@"K"]];
         [_measurementBases setObject:temperatureBase forKey:temperatureBase.name];
     }
 }
--(NSArray *)getMeasurementNames{
-    return [_measurementBases allKeys];
+
+-(void)setMeasurementBase:(NSString *)baseName{
+    // Set the new measurement base, select the first units and invoke a refresh
+    _selectedBase = _measurementBases[baseName];
+    _fromUnit = _selectedBase.units[0];
+    _toUnit = _selectedBase.units[0];
+    _baseHasChanged = true;
+    [self doConversion];
 }
 
 -(void)setInputValue:(double)inputValue{
@@ -72,14 +79,22 @@
     [self doConversion];
 }
 
--(void)setConversionFrom:(Unit*)fromUnit{
+-(void)setFromUnit:(Unit *)fromUnit{
     _fromUnit = fromUnit;
     [self doConversion];
 }
 
--(void)setConversionTo:(Unit*)toUnit{
+-(void)setToUnit:(Unit *)toUnit{
     _toUnit = toUnit;
     [self doConversion];
+}
+
+-(NSArray *)getMeasurementNames{
+    return [_measurementBases allKeys];
+}
+
+-(NSArray *)getCurrentUnitNames{
+    return [_selectedBase getAllUnitNames];
 }
 
 -(void)doConversion{
@@ -93,7 +108,12 @@
         value += _toUnit.offset;
     }
     _outputValue = value;
-    [_delegateDataChange convertorOutputDidChange:self];
+    [_delegateDataChange convertorOutputDidChange:self andMeasurementBaseChanged:_baseHasChanged];
+    
+    // Reset base change flag.
+    if(_baseHasChanged){
+        _baseHasChanged = false;
+    }
 }
 
 -(void)setDataChangeCallback:(id)callback{

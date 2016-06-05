@@ -11,10 +11,6 @@
 
 @interface ConverterPicker : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIPickerView* pickerUIView;
-@property (nonatomic)Converter* converter;
-
--(instancetype)initMeas:(NSMutableDictionary*)measurementBases selectBase:(NSString*)selectBase;
--(void)selectMeasurementType:(NSString*)baseName;
+- (instancetype)initWithConverter:(Converter*)converter;
 
 @end

@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Unit.h"
+#import "MeasurementBase.h"
 
 @interface Converter : NSObject
 
-@property (nonatomic) NSMutableDictionary* measurementBases;
 @property (nonatomic) double inputValue;
 @property (nonatomic) double outputValue;
 
+@property (nonatomic) Unit* fromUnit;
+@property (nonatomic) Unit* toUnit;
+@property (nonatomic, readonly) MeasurementBase* selectedBase;
+
+-(void)setMeasurementBase:(NSString*)baseName;
 -(NSArray*)getMeasurementNames;
--(void)setConversionFrom:(Unit*)fromUnit;
--(void)setConversionTo:(Unit*)toUnit;
+-(NSArray*)getCurrentUnitNames;
 
 -(void)setDataChangeCallback:(id)callback;
 
@@ -25,5 +28,5 @@
 
 // Callback for data change
 @interface NSObject(ConverterCallbacks)
-- (void)convertorOutputDidChange:(Converter*)convertor;
+- (void)convertorOutputDidChange:(Converter*)convertor andMeasurementBaseChanged:(bool)baseHasChanged;
 @end

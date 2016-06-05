@@ -10,7 +10,7 @@
 
 @implementation MeasurementBase
 
--(instancetype)init:(NSString *)name {
+-(instancetype)initWithName:(NSString *)name {
     self = [super init];
     _name = name;
     _units = [[NSMutableArray alloc] init];

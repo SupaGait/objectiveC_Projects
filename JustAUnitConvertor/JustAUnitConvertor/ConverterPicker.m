@@ -10,64 +10,43 @@
 #import "MeasurementBase.h"
 
 @implementation ConverterPicker{
-    NSMutableDictionary* _measurementBases;
-    MeasurementBase* _selectedBase;
-    NSArray* _measurementUnits;
+    Converter* _converter;
 }
-
-- (instancetype)initMeas:(NSMutableDictionary*)measurementBases selectBase:(NSString*)selectBase {
+- (instancetype)initWithConverter:(Converter*)converter
+{
     self = [super init];
     if (self) {
-        _measurementBases = measurementBases;
-        _measurementUnits = [[NSArray alloc] init];
-        
-        // Show first base
-        _selectedBase = _measurementBases[selectBase];
-        _measurementUnits = [_selectedBase getAllUnitNames];
+        _converter = converter;
     }
     return self;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
+    return 2; // From and To components
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return _measurementUnits.count;
+    return [_converter getMeasurementNames].count;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return _measurementUnits[row];
+    return [_converter getCurrentUnitNames][row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSLog(@"Selected row:%ld component:%ld", row, component);
     
     switch (component) {
         case 0:{
-            Unit* fromUnit = [_selectedBase getUnit:(int)row];
-            [_converter setConversionFrom:fromUnit];
+            Unit* fromUnit = [_converter.selectedBase getUnit:(int)row];
+            [_converter setFromUnit:fromUnit];
             break;
         }
         case 1:{
-            Unit* toUnit = [_selectedBase getUnit:(int)row];
-            [_converter setConversionTo:toUnit];
+            Unit* toUnit = [_converter.selectedBase getUnit:(int)row];
+            [_converter setToUnit:toUnit];
             break;
         }
         default:
             break;
-    }
-}
-
--(void)selectMeasurementType:(NSString*)baseName
-{
-    NSLog(@"Convertor update: %@", baseName);
-    
-    // Update data
-    _selectedBase = _measurementBases[baseName];
-    _measurementUnits = [_selectedBase getAllUnitNames];
-    
-    // Reload the view
-    if(_pickerUIView){
-        [_pickerUIView reloadAllComponents];
     }
 }
 

@@ -17,8 +17,8 @@
 @end
 
 @implementation ViewController {
-    MeasurementPicker* _measurmentControl;
-    ConverterPicker* _converterControl;
+    MeasurementPicker* _measurmentPickerControl;
+    ConverterPicker* _converterPickerControl;
     Converter* _convertor;
 }
 
@@ -30,21 +30,18 @@
     [_convertor setDataChangeCallback:self]; // Register for data change callback
     
     // Instantiate the picker data sources
-    _converterControl = [[ConverterPicker alloc] initMeas:_convertor.measurementBases selectBase:[_convertor getMeasurementNames][0]];
-    _measurmentControl = [[MeasurementPicker alloc] init:[_convertor getMeasurementNames]];
-    
-    _measurmentControl.convertorPicker = _converterControl;
-    _converterControl.converter = _convertor;
-    
-    // Assign UIviews to UIcontrollers
-    _converterControl.pickerUIView = _converterPicker;
+    _converterPickerControl = [[ConverterPicker alloc] initWithConverter:_convertor];
+    _measurmentPickerControl = [[MeasurementPicker alloc] initWithConverter:_convertor];
     
     // Attach to the data source class
-    _measurementPicker.dataSource = _measurmentControl;
-    _measurementPicker.delegate = _measurmentControl;
+    _measurementPicker.dataSource = _measurmentPickerControl;
+    _measurementPicker.delegate = _measurmentPickerControl;
     
-    _converterPicker.dataSource = _converterControl;
-    _converterPicker.delegate = _converterControl;
+    _converterPicker.dataSource = _converterPickerControl;
+    _converterPicker.delegate = _converterPickerControl;
+    
+    // Select the first measurement by default
+    //[_measurementPicker selectRow:0 inComponent:0 animated:false];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,8 +64,16 @@
     //_outputLabel.text = [NSString stringWithFormat:@"%f",_convertor.outputValue];
 }
 
--(void)convertorOutputDidChange:(Converter*)convertor{
+-(void)convertorOutputDidChange:(Converter*)convertor andMeasurementBaseChanged:(bool)baseHasChanged{
     NSLog(@"Converter callback..");
+    
+    // Reload the component
+    if(baseHasChanged){
+        // Reset to first unit in the base
+        [_converterPicker reloadAllComponents];
+        [_converterPicker selectRow:0 inComponent:0 animated:true];
+        [_converterPicker selectRow:0 inComponent:1 animated:true];
+    }
     _outputLabel.text = [NSString stringWithFormat:@"%f",_convertor.outputValue];
 }
 

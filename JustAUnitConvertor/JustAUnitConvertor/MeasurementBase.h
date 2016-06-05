@@ -14,7 +14,7 @@
 @property (nonatomic) NSString* name;
 @property (nonatomic) NSMutableArray* units;
 
--(instancetype)init:(NSString*)name;
+-(instancetype)initWithName:(NSString*)name;
 -(void)addUnit:(Unit*)unit;
 -(Unit*)getUnit:(int)index;
 -(NSArray*)getAllUnitNames;
