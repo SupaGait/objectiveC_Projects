@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *converterPicker;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UILabel *outputLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fromUnitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *toUnitLabel;
 
 - (IBAction)inputTextFieldChanged:(id)sender;
 

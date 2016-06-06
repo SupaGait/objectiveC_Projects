@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MeasurementPicker.h"
 #import "ConverterPicker.h"
+#import "QuartzCore/QuartzCore.h"
 
 #import "Converter.h"
 
@@ -36,12 +37,15 @@
     // Attach to the data source class
     _measurementPicker.dataSource = _measurmentPickerControl;
     _measurementPicker.delegate = _measurmentPickerControl;
-    
     _converterPicker.dataSource = _converterPickerControl;
     _converterPicker.delegate = _converterPickerControl;
     
-    // Select the first measurement by default
-    //[_measurementPicker selectRow:0 inComponent:0 animated:false];
+    // Set invalid border color, show by just increase border width
+    _inputTextField.layer.borderWidth = 0;
+    _inputTextField.layer.borderColor = [[UIColor colorWithRed:255 green:0 blue:0 alpha:50] CGColor];
+    
+    // Force an update
+    [self convertorOutputDidChange:_convertor andMeasurementBaseChanged:true];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,8 +64,17 @@
     NSString* inputText = [_inputTextField text];
     NSLog(@"Value: %@",inputText);
     
-    _convertor.inputValue = [_inputTextField.text doubleValue];
-    //_outputLabel.text = [NSString stringWithFormat:@"%f",_convertor.outputValue];
+    NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
+    NSNumber* number = [formatter numberFromString:_inputTextField.text];
+    
+    if(number){
+        _inputTextField.layer.borderWidth = 0;
+        _convertor.inputValue = [number doubleValue];
+    }
+    else {
+        _inputTextField.layer.borderWidth = 1;
+        _outputLabel.text = @"Invalid input";
+    }
 }
 
 -(void)convertorOutputDidChange:(Converter*)convertor andMeasurementBaseChanged:(bool)baseHasChanged{
@@ -74,7 +87,9 @@
         [_converterPicker selectRow:0 inComponent:0 animated:true];
         [_converterPicker selectRow:0 inComponent:1 animated:true];
     }
-    _outputLabel.text = [NSString stringWithFormat:@"%f",_convertor.outputValue];
+    _outputLabel.text = [NSString stringWithFormat:@"%g",_convertor.outputValue];
+    _fromUnitLabel.text = [NSString stringWithFormat:@"[%@]",convertor.fromUnit.unitName];
+    _toUnitLabel.text = [NSString stringWithFormat:@"[%@]",convertor.toUnit.unitName];
 }
 
 @end
