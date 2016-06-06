@@ -32,7 +32,7 @@
     return [_converter getCurrentUnitNames][row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"Selected row:%ld component:%ld", row, component);
+    NSLog(@"Selected row:%ld component:%ld", (long)row, component);
     
     switch (component) {
         case 0:{

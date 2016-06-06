@@ -335,7 +335,7 @@
 				INFOPLIST_FILE = JustAUnitConvertor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fr.gklomphaar.JustAUnitConvertor;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.gklomphaar.JustAUnitConverter;
 				PRODUCT_NAME = JustAUnitConverter;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -350,7 +350,7 @@
 				INFOPLIST_FILE = JustAUnitConvertor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fr.gklomphaar.JustAUnitConvertor;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.gklomphaar.JustAUnitConverter;
 				PRODUCT_NAME = JustAUnitConverter;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

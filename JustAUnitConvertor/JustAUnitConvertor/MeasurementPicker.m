@@ -31,7 +31,7 @@
     return [_converter getMeasurementNames][row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"Selected row:%ld component:%ld", row, component);
+    NSLog(@"Selected row:%ld component:%ld", (long)row, component);
     
     NSString* measName = [_converter getMeasurementNames][row];
     [_converter setMeasurementBase: measName];
