@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2D64CC1D05B02E005F15D8 /* splash_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2D64CB1D05B02E005F15D8 /* splash_background.png */; };
+		4C2D64CF1D05B1B0005F15D8 /* splash_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2D64CE1D05B1B0005F15D8 /* splash_background@2x.png */; };
+		4C2D64D11D05B493005F15D8 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2D64D01D05B493005F15D8 /* main_background.png */; };
 		4C4D32E31CF88344003E016B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D32E21CF88344003E016B /* main.m */; };
 		4C4D32E61CF88344003E016B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D32E51CF88344003E016B /* AppDelegate.m */; };
 		4C4D32E91CF88344003E016B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D32E81CF88344003E016B /* ViewController.m */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C2D64CB1D05B02E005F15D8 /* splash_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_background.png; path = Images/splash_background.png; sourceTree = "<group>"; };
+		4C2D64CE1D05B1B0005F15D8 /* splash_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash_background@2x.png"; path = "Images/splash_background@2x.png"; sourceTree = "<group>"; };
+		4C2D64D01D05B493005F15D8 /* main_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main_background.png; path = Images/main_background.png; sourceTree = "<group>"; };
 		4C4D32DE1CF88344003E016B /* JustAUnitConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustAUnitConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4D32E21CF88344003E016B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C4D32E41CF88344003E016B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +60,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C2D64CD1D05B038005F15D8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4C2D64D01D05B493005F15D8 /* main_background.png */,
+				4C2D64CE1D05B1B0005F15D8 /* splash_background@2x.png */,
+				4C2D64CB1D05B02E005F15D8 /* splash_background.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		4C4D32D51CF88344003E016B = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,7 @@
 		4C4D32E11CF88344003E016B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4C2D64CD1D05B038005F15D8 /* Images */,
 				4C4D32E21CF88344003E016B /* main.m */,
 			);
 			name = "Supporting Files";
@@ -180,7 +197,10 @@
 			files = (
 				4C4D32F11CF88344003E016B /* LaunchScreen.storyboard in Resources */,
 				4C4D32EE1CF88344003E016B /* Assets.xcassets in Resources */,
+				4C2D64D11D05B493005F15D8 /* main_background.png in Resources */,
+				4C2D64CC1D05B02E005F15D8 /* splash_background.png in Resources */,
 				4C4D32EC1CF88344003E016B /* Main.storyboard in Resources */,
+				4C2D64CF1D05B1B0005F15D8 /* splash_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = JustAUnitConvertor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -325,6 +346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = JustAUnitConvertor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
