@@ -37,13 +37,17 @@
     return self;
 }
 
+-(void)conversionToBase:(Unit*)unit{
+    
+}
+
 -(void)fillBaseTypes{
     {
         // Fill the area base unit
         MeasurementBase* areaBase = [[MeasurementBase alloc] initWithName:@"Area"];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square kilometre" offset:0.0 factor:1000000 unitName:@"km2"]];
         [areaBase addUnit: [[Unit alloc] initWithName:@"Square metre" offset:0.0 factor:1.0 unitName:@"m2" ]];
-        [areaBase addUnit: [[Unit alloc] initWithName:@"Square foot" offset:0.0 factor:10.7639 unitName:@"ft2"]];
+        [areaBase addUnit: [[Unit alloc] initWithName:@"Square foot" offset:0.0 factor:0.092903 unitName:@"ft2"]];
         [_measurementBases setObject:areaBase forKey:areaBase.name];
     }
     {
@@ -51,16 +55,25 @@
         MeasurementBase* lengthBase = [[MeasurementBase alloc] initWithName:@"Length"];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Kilometer" offset:0.0 factor:1000 unitName:@"km"]];
         [lengthBase addUnit: [[Unit alloc] initWithName:@"Meter" offset:0.0 factor:1.0 unitName:@"m"]];
-        [lengthBase addUnit: [[Unit alloc] initWithName:@"Mile" offset:0.0 factor:0.000621371 unitName:@"mi"]];
-        [lengthBase addUnit: [[Unit alloc] initWithName:@"Foot" offset:0.0 factor:3.28084 unitName:@"ft"]];
+        [lengthBase addUnit: [[Unit alloc] initWithName:@"Mile" offset:0.0 factor:1609.34 unitName:@"mi"]];
+        [lengthBase addUnit: [[Unit alloc] initWithName:@"Foot" offset:0.0 factor:0.3048 unitName:@"ft"]];
         [_measurementBases setObject:lengthBase forKey:lengthBase.name];
     }
     {
         // Fill the Temperature base
         MeasurementBase* temperatureBase = [[MeasurementBase alloc] initWithName:@"Temperature"];
         [temperatureBase addUnit: [[Unit alloc] initWithName:@"Celsius" offset:0.0 factor:1.0 unitName:@"C"]];
-        [temperatureBase addUnit: [[Unit alloc] initWithName:@"Fahrenheit" offset:32 factor:1.8 unitName:@"F"]];
-        [temperatureBase addUnit: [[Unit alloc] initWithName:@"Kelvin" offset:273.15 factor:1 unitName:@"K"]];
+        
+        Unit *fahrenheitUnit = [[Unit alloc] initWithName:@"Fahrenheit" offset:32 factor:(1.0/1.8) unitName:@"F"];
+        fahrenheitUnit.toBaseFromUnit = ^(double inputUnit, double offset, double factor){
+            return (inputUnit - offset) * factor;
+        };
+        fahrenheitUnit.toUnitFromBase = ^(double inputBase, double offset, double factor){
+            return inputBase / factor + offset;
+        };
+        
+        [temperatureBase addUnit: fahrenheitUnit];
+        [temperatureBase addUnit: [[Unit alloc] initWithName:@"Kelvin" offset:-273.15 factor:1 unitName:@"K"]];
         [_measurementBases setObject:temperatureBase forKey:temperatureBase.name];
     }
 }
@@ -103,9 +116,8 @@
     // Then from base SI to the new Unit using 'to' parameters.
     double value = 0;
     if(_fromUnit && _toUnit){
-        value = _inputValue * _fromUnit.factor + _fromUnit.offset;
-        value *= 1/_toUnit.factor;
-        value += _toUnit.offset;
+        value = [_fromUnit convertToBaseUnitFromValue:_inputValue];
+        value = [_toUnit convertToUnitFromBaseValue:value];
     }
     _outputValue = value;
     [_delegateDataChange convertorOutputDidChange:self andMeasurementBaseChanged:_baseHasChanged];

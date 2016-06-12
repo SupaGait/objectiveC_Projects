@@ -10,11 +10,19 @@
 
 @interface Unit : NSObject
 
-@property (nonatomic) NSString* name;
-@property (nonatomic) double offset;
-@property (nonatomic) double factor;
-@property (nonatomic) NSString* unitName;
-
 -(instancetype)initWithName:(NSString*)name offset:(double)offset factor:(double)factor unitName:(NSString*)unitName;
+
+@property (nonatomic, readonly) NSString* name;
+@property (nonatomic, readonly) double offset;
+@property (nonatomic, readonly) double factor;
+@property (nonatomic, readonly) NSString* unitName;
+
+// Possibility for custom conversion
+@property (nonatomic, copy) double(^toBaseFromUnit)(double inputUnit, double offset, double factor);
+@property (nonatomic, copy) double(^toUnitFromBase)(double inputBase, double offset, double factor);
+
+// Conversion methods
+-(double)convertToBaseUnitFromValue:(double)value;
+-(double)convertToUnitFromBaseValue:(double)baseValue;
 
 @end

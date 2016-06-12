@@ -16,7 +16,25 @@
     _offset = offset;
     _factor = factor;
     _unitName = unitName;
+
     return self;
+}
+
+-(double)convertToBaseUnitFromValue:(double)value{
+    if(_toBaseFromUnit){
+        return _toBaseFromUnit(value, _offset, _factor);
+    }
+    else{
+        return value * _factor + _offset; // Default conversion
+    }
+}
+-(double)convertToUnitFromBaseValue:(double)baseValue{
+    if(_toUnitFromBase){
+        return _toUnitFromBase(baseValue, _offset, _factor);
+    }
+    else{
+        return (baseValue - _offset)/_factor; // Default conversion
+    }
 }
 
 @end
